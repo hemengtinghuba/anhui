@@ -1,0 +1,171 @@
+
+
+$columns: 24 !default;
+/*栅栏系统变量定义*/ 
+$grid-gutter-width: 30px;//栅栏最大间隙
+
+$container-max-widths: (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1140px
+)!default;//栅栏系统每个breakpoint对应的最大宽度
+
+$grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px
+)!default;//栅栏系统对应的breakpoint
+
+
+$grid-columns: 12!default;//栅栏系统分成的份数
+
+$enable-grid: true!default;//是否允许栅栏系统
+/*展览系统mixin定义*/ 
+@mixin make-container() {
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: $grid-gutter-width / 2;
+    padding-right: $grid-gutter-width / 2;
+}
+
+@mixin make-row() {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+
+
+
+
+@mixin make-container-max-width($max-widths: $container-max-widths, $breakpoints: $grid-breakpoints) {
+    @each $breakpoint, $max-width in $max-widths {
+        $width: map-get($breakpoints, $breakpoint);//breakpoint的最小宽度
+        @if $width {
+            @media (min-width: $width) {
+                max-width: $max-width;
+            }
+        }
+    }
+}
+
+@mixin max-col() {
+    @each $breakpoint,$width in $grid-breakpoints {
+        @media (min-width: $width) {
+            @for $i from 1 through $grid-columns {
+                .col-#{$breakpoint}-#{$i} {
+                    flex: 0 0 percentage($i / $grid-columns);
+                    max-width: percentage($i / $grid-columns);
+                    position: relative;
+                    width: 100%;
+                    min-height: 1px; 
+                    padding-left: $grid-gutter-width / 2;
+                    padding-right: $grid-gutter-width / 2;
+                    &.no-gutter {
+                        padding-left: 0;
+                        padding-right: 0;
+                    }
+                }
+                .offset-#{$breakpoint}-#{$i} {
+                    margin-left: percentage($i / $grid-columns);
+                }
+            }            
+        }
+    }
+    @for $i from 1 through $grid-columns {
+        .col-#{$i} {
+            flex: 0 0 percentage($i / $grid-columns);
+            max-width: percentage($i / $grid-columns);
+            position: relative;
+            width: 100%;
+            min-height: 1px; 
+            padding-left: $grid-gutter-width / 2;
+            padding-right: $grid-gutter-width / 2;
+        }
+        .offset-#{$i} {
+            margin-left: percentage($i / $grid-columns);
+        }
+    }    
+}
+/*栅栏系统逻辑定义*/ 
+
+@if $enable-grid {
+    .container {
+        @include make-container();
+        @include make-container-max-width();
+    }
+    .container-flue {
+        @include make-container();
+        &.no-gutter {
+            padding: 0;
+        }
+    }
+    .row {
+        @include make-row();
+    }
+    @include max-col();
+}
+
+
+
+
+//获取不同col-x,offset-x,push-x,pull-x
+@for $i from 1 through $columns {
+    .s-col-#{$i} {
+        flex: 0 0 percentage($i / $columns);
+        max-width: percentage($i / $columns);//加上max-width防止gutter很大时候长度溢出
+    }
+    .s-offset-#{$i} {
+        margin-left: percentage($i / $columns);
+    }
+    .s-push-#{$i} {
+        position: relative;
+        left: percentage($i / $columns);
+    }
+    .s-pull-#{$i} {
+        position: relative;
+        right: percentage($i / $columns);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.s-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+//row flex布局对齐方式
+$align-way:        ("center", "flex-start", "flex-end", "baseline");
+$justify-way:      ("space-around", "space-between", "flex-start", "flex-end", "center");
+
+
+@each $key in $align-way {
+    .is-align-#{$key} {
+        align-items: #{$key};
+    }
+}
+@each $key in $justify-way {
+    .is-justify-#{$key} {
+        justify-content: #{$key};
+    }
+}

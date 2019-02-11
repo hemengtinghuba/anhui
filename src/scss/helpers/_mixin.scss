@@ -1,0 +1,89 @@
+//按钮形状mixin
+@mixin btn-size($padding-x, $padding-y, $font-size, $line-height, $border-radius) {
+    padding: $padding-y $padding-x;
+    font-size: $font-size;
+    line-height: $line-height;
+    border-radius: $border-radius;
+}
+//定义渐变mixin
+@mixin gradient-bg($color) {
+    background: $color linear-gradient(180deg, mix($body-bg, $color, 15%), $color);
+}
+
+//定义元素相对于父元素居中
+@mixin center-by-parent($direct: xy) {
+    position: absolute;
+    @if ($direct == x) {
+        left: 50%;
+        transform: translate(-50%, 0);
+    }@else if ($direct == y) {
+        top: 50%;
+        transform: translate(0, -50%);
+    }@else if ($direct == xy) {
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+//定义flex居中
+@mixin flex-align-center {
+    display: flex;
+    align-items: center;
+}
+@mixin flex-justify($dir: center) {
+    display: flex;
+    justify-content: $dir;
+}
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+//定义生成常用的margin和padding
+@mixin make-padding-left($level, $num) {
+    .com-padding-#{$level} {
+        padding-left: $num;
+    }
+}
+@mixin make-padding-right($level, $num) {
+    .com-padding-#{$level} {
+        padding-right: $num;
+    }
+}
+@mixin make-padding-top($level, $num) {
+    .com-padding-#{$level} {
+        padding-top: $num;
+    }
+}
+@mixin make-padding-bottom($level, $num) {
+    .com-padding-#{$level} {
+        padding-bottom: $num;
+    }
+}
+@mixin make-margin-left($level, $num) {
+    .com-margin-#{$level} {
+        margin-left: $num;
+    }
+}
+@mixin make-margin-right($level, $num) {
+    .com-margin-#{$level} {
+        margin-right: $num;
+    }
+}
+@mixin make-margin-top($level, $num) {
+    .com-margin-#{$level} {
+        margin-top: $num;
+    }
+}
+@mixin make-margin-bottom($level, $num) {
+    .com-margin-#{$level} {
+        margin-bottom: $num;
+    }
+}
+
+
+//更改主体色
+@mixin change-theme-color($color) {
+    $theme-color: $color;
+}
+
