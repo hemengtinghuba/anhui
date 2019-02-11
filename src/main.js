@@ -9,7 +9,6 @@ import  './components/index'
 //========================第三方模块引入=============================//
 import ElementUI from 'element-ui'
 import axios from "./api/api"
-// import 'element-ui/lib/theme-chalk/index.css'
 
 Vue.use(ElementUI)
 Vue.use(axios)

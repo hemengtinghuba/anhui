@@ -1,0 +1,449 @@
+/*
+*  一些常见的类名
+*/
+//=============================align============================================//
+$align: (
+    baseline: baseline,
+    top: top,
+    middle: middle,
+    text-bottom: text-bottom,
+    text-top: text-top,
+);
+@each $pos,$val in $align {
+    .align-#{$pos} {
+        vertical-align: $val !important;
+    }
+}
+//============================border============================================//
+@each $key,$val in $colors {
+    .border-#{$key} {
+        border: 1px solid $val;
+    }
+}
+.border {
+    border: 1px solid #eee;
+}
+.border-top {
+    border-top: 1px solid #eee;
+}
+.border-bottom {
+    border-bottom: 1px solid #eee;
+}
+.border-left {
+    border-left: 1px solid #eee;
+}
+.border-right {
+    border-right: 1px solid #eee;
+}
+//===========================clearfix============================================//
+.clearfix {
+    &::after {
+       display: block; 
+       content: "";
+       clear: both;
+    }
+}
+//============================cursor==============================================//
+.cursor-pointer {
+    cursor: pointer;
+}
+//============================float=================================================//
+.fl {
+    float: left !important;
+}
+.fr {
+    float: right !important;
+}
+
+
+//============================box-shadow==============================================//
+$box-shadow-sm:               0 .125rem .25rem rgba(#000, .075) !default;
+$box-shadow:                  0 .5rem 1rem rgba(#000, .15) !default;
+$box-shadow-lg:               0 1rem 3rem rgba(#000, .175) !default;
+.shadow {
+    box-shadow: $box-shadow-sm !important;
+}
+.shadow-sm {
+    box-shadow: $box-shadow-sm !important;
+}
+.shadow-lg {
+    box-shadow: $box-shadow-lg !important;
+}
+
+
+
+//===================================text=====================================//
+.text-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.text-center {
+    text-align: center;
+}
+.text-left {
+    text-align: left;
+}
+.text-right {
+    text-align: right;
+}
+.text-nowrap {
+    white-space: nowrap;
+}
+
+//===================================沾满整个屏幕============================//
+.full-screen {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+
+//==================================元素相对于父元素居中========================//
+.x-y-center {
+    @include center-by-parent(xy);
+}
+.x-center {
+    @include center-by-parent(x);
+}
+.y-center {
+    @include center-by-parent(y);
+}
+
+//====================================圆形头像===================================//
+.rounded {
+    border-radius: 4px!important;
+}
+.rounded-top {
+    border-top-left-radius: 4px!important;
+    border-top-right-radius: 4px!important
+}
+.rounded-bottom {
+    border-bottom-left-radius: 4px!important;
+    border-bottom-right-radius: 4px!important
+}
+.rounded-left {
+    border-top-left-radius: 4px!important;
+    border-bottom-left-radius: 4px!important
+}
+.rounded-right {
+    border-top-right-radius: 4px!important;
+    border-bottom-right-radius: 4px!important
+}
+.rounded-circle {
+    border-radius: 50%;
+}
+
+//===========================================颜色======================================//
+@each $key,$val in $colors {
+    .#{$key} {
+        color: $val;
+    }
+}
+@each $key, $val in $gray {
+    .gray-#{$key} {
+        color: $val;
+    }
+}
+//背景颜色
+@each $key,$val in $colors {
+    .bg-#{$key} {
+        background-color: $val;
+    }
+}
+@each $key,$val in $gray {
+    .bg-#{$key} {
+        background-color: $val;
+    }
+}
+//============================================文字=========================================//
+$font-weight-base: 400 !default;
+$font-weight-light: 300 !default;
+$font-weight-bold: 700 !default;
+$font-weights: (
+    font-weight-base: $font-weight-base,
+    font-weight-light: $font-weight-light,
+    font-weight-bold: $font-weight-bold
+);
+@each $key,$val in $font-weights {
+    .#{$key} {
+        font-weight: $val;
+    }
+}
+
+//==========================================字体大小============================================//
+$font-size-base: 1rem !default;//默认浏览器字体为16px，全局设置会改变默认字体大小
+$font-size-sm: ($font-size-base * .875) !default;
+$font-size-xs: ($font-size-base * .75) !default;
+$font-size-bg: ($font-size-base * 1.125) !default;
+$font-size-lg: ($font-size-base * 1.35) !default;
+$font-size-ex: ($font-size-base * 2) !default;
+$h-size: (
+    h1: 3.5rem,
+    h2: 3rem,
+    h3: 2.5rem,
+    h4: 2rem,
+    h5: 1.5rem,
+);
+$fonts: (
+    font-size-base: $font-size-base,
+    font-size-sm: $font-size-sm,
+    font-size-xs: $font-size-xs,
+    font-size-bg: $font-size-bg,
+    font-size-lg: $font-size-lg,
+    font-size-ex: $font-size-ex
+);
+@each $key,$val in $fonts {
+    .#{$key} {
+        font-size: $val;
+    }
+}
+@each $key,$val in $h-size {
+    .#{$key} {
+        font-size: $val;
+    }
+}
+//=========================================去除padding和margin======================================//
+.no-padding {
+    padding: 0 !important;
+}
+.no-margin {
+    margin: 0!important;
+}
+//=================================display===========================================//
+.d-block {
+    display: block;
+}
+.d-inline {
+    display: inline;
+}
+.d-inline-block {
+    display: inline-block;
+}
+.d-none {
+    display: none;
+}
+.d-flex {
+    display: flex;
+    &.flex-row {
+        flex-direction: row;
+    }
+    &.flex-column {
+        flex-direction: column;
+    }
+    &.justify-start {
+        justify-content: flex-start;
+    }
+    &.justify-center {
+        justify-content: center;
+    }
+    &.justify-end {
+        justify-content: flex-end;
+    }
+    &.justify-around {
+        justify-content: space-around;
+    }
+    &.justify-between {
+        justify-content: space-between;
+    }
+
+    &.align-start {
+        align-items: flex-start;
+    }
+    &.align-center {
+        align-items: center;
+    }
+    &.align-end {
+        align-items: flex-end;
+    }
+    &.align-around {
+        align-items: space-around;
+    }
+    &.align-between {
+        align-items: space-between;
+    }
+}
+.d-inline-flex {
+    display: inline-flex;
+    &.flex-row {
+        flex-direction: row;
+    }
+    &.flex-column {
+        flex-direction: column;
+    }
+    &.justify-content-start {
+        justify-content: flex-start;
+    }
+    &.justify-content-center {
+        justify-content: center;
+    }
+    &.justify-content-end {
+        justify-content: flex-end;
+    }
+    &.justify-content-around {
+        justify-content: space-around;
+    }
+    &.justify-content-between {
+        justify-content: space-between;
+    }
+
+    &.align-items-start {
+        align-items: flex-start;
+    }
+    &.align-items-center {
+        align-items: center;
+    }
+    &.align-items-end {
+        align-items: flex-end;
+    }
+    &.align-items-around {
+        align-items: space-around;
+    }
+    &.align-items-between {
+        align-items: space-between;
+    }
+}
+//======================================文字相关==========================//
+
+
+
+
+//============================常见高度和宽度====================================//
+$com-width: (
+    "w-25": 25%,
+    "w-45": 45%,
+    "w-50": 50%,
+    "w-75": 75%,
+    "w-100": 100%
+);
+$com-height: (
+    "h-25": 25%,
+    "h-45": 45%,
+    "h-50": 50%,
+    "h-75": 75%,
+    "h-100": 100%  
+);
+$com-max-width: (
+    "mw-25": 25%,
+    "mw-45": 45%,
+    "mw-50": 50%,
+    "mw-75": 75%,
+    "mw-100": 100%   
+);
+$com-max-height: (
+    "mh-25": 25%,
+    "mh-45": 45%,
+    "mh-50": 50%,
+    "mh-75": 75%,
+    "mh-100": 100%
+);
+
+@each $key,$val in $com-width {
+    .#{$key} {
+        width: $val
+    }
+}
+@each $key,$val in $com-height {
+    .#{$key} {
+        height: $val
+    }
+}
+@each $key,$val in $com-max-width {
+    .#{$key} {
+        max-width: $val
+    }
+}
+@each $key,$val in $com-max-height {
+    .#{$key} {
+        max-height: $val
+    }
+}
+//============================常见间距====================================//
+$spacer: 3rem !default;
+$spacers: (
+    "0": 0,
+    "1": ($spacer * .25),
+    "2": ($spacer * .5),
+    "3": ($spacer * 1),
+    "4": ($spacer * 1.25),
+    "5": ($spacer * 1.5),
+);
+
+@each $key,$val2 in $spacers {
+    .mt-#{$key} {
+        margin-top: $val2;
+    }
+    .ml-#{$key} {
+        margin-left: $val2;
+    }
+    .mr-#{$key} {
+        margin-right: $val2;
+    }
+    .mb-#{$key} {
+        margin-bottom: $val2;
+    }
+    .mx-#{$key} {
+        margin-left: $val2;
+        margin-right: $val2;
+    }
+    .my-#{$key} {
+        margin-top: $val2;
+        margin-bottom: $val2;
+    }
+
+    .pt-#{$key} {
+        padding-top: $val2;
+    }
+    .pl-#{$key} {
+        padding-left: $val2;
+    }
+    .pr-#{$key} {
+        padding-right: $val2;
+    }
+    .pb-#{$key} {
+        padding-bottom: $val2;
+    }
+    .px-#{$key} {
+        padding-left: $val2;
+        padding-right: $val2;
+    }
+    .py-#{$key} {
+        padding-top: $val2;
+        padding-bottom: $val2;
+    }
+}
+//==============================border-radius=================//
+$border-radius: (
+    "radius-sm": 2px,
+    "radius-xs": 3px,
+    "radius-md": 4px,
+    "radius-bg": 5px,
+    "radius-lg": 6px,
+    "radius-round": 50%
+);
+@each $key, $val in $border-radius {
+    .#{$key} {
+        border-radius: $val;
+    }
+}
+//==============================圆形头像=====================//
+// .round-face {
+//     width: 100px;
+//     height: 100px;
+//     border-radius: 50%;
+//     img {
+//         width: 100%;
+//         height: 100%;
+//         border-radius: 50%;
+//     }
+//     &.small {
+//         width: 100px;
+//         height: 100px;
+//     }
+//     &.big {
+//         width: 150px;
+//         height: 150px;
+//     }
+// }

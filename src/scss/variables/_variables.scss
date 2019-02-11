@@ -99,38 +99,6 @@ $body-bg:             #f8f9fa;//背景色
 
 
 
-//=========================================================================//
-//=============================字体定义=====================================//
-//=========================================================================//
-
-
-//============================常见字体大小设置==============================//
-$font-size-base: 1rem !default;//默认浏览器字体为16px，全局设置会改变默认字体大小
-$font-size-sm: ($font-size-base * .875) !default;
-$font-size-xs: ($font-size-base * .75) !default;
-$font-size-bg: ($font-size-base * 1.125) !default;
-$font-size-lg: ($font-size-base * 1.35) !default;
-$font-size-ex: ($font-size-base * 2) !default;
-
-$fonts: (
-    font-size-base: $font-size-base,
-    font-size-sm: $font-size-sm,
-    font-size-xs: $font-size-xs,
-    font-size-bg: $font-size-bg,
-    font-size-lg: $font-size-lg,
-    font-size-ex: $font-size-ex
-);
-
-//=====================================字重设置====================================//
-$font-weight-base: 400 !default;
-$font-weight-light: 300 !default;
-$font-weight-bold: 700 !default;
-
-$font-weights: (
-    font-weight-base: $font-weight-base,
-    font-weight-light: $font-weight-light,
-    font-weight-bold: $font-weight-bold
-);
 
 
 
@@ -152,83 +120,12 @@ $zindex-shadow:                     9998 !default;//模态框
 
 
 
-//圆形头像定义
-$round-face-radius:         2.5rem;
-$round-face-radius-sm:      2rem;
-$round-face-radius-lg:      3rem;
 
-
-//shadow的定义
-$box-shadow-sm:               0 .125rem .25rem rgba(#000, .075) !default;
-$box-shadow:                  0 .5rem 1rem rgba(#000, .15) !default;
-$box-shadow-lg:               0 1rem 3rem rgba(#000, .175) !default;
-
-//遮罩层颜色定义
-$shadow-mask:                 rgba(0, 0, 0, .3) !default;
 
 //圆角
 $border-radius-sm:               3px !default;
 $border-radius:                  6px !default;
 $border-radius-lg:               9px !default;
-
-//公共margin和公共padding
-$com-padding-left: (
-    left-lg: 25px,
-    left-big: 20px,
-    left-base: 15px,
-    left-sm:  10px,
-    left-xs: 5px,
-);
-$com-padding-right: (
-    right-lg: 25px,
-    right-big: 20px,
-    right-base: 15px,
-    right-sm: 10px,
-    right-xs: 5px,
-);
-$com-padding-top: (
-    top-lg: 25px,
-    top-big: 20px,
-    top-base: 15px,
-    top-sm: 10px,
-    top-xs: 5px,
-);
-$com-padding-bottom: (
-    bottom-lg: 25px,
-    bottom-big: 20px,
-    bottom-base: 15px,
-    bottom-sm: 10px,
-    bottom-xs: 5px,
-);
-
-$com-margin-left: (
-    left-lg: 25px,
-    left-big: 20px,
-    left-base: 15px,
-    left-sm:  10px,
-    left-xs: 5px,
-);
-$com-margin-right: (
-    right-lg: 25px,
-    right-big: 20px,
-    right-base: 15px,
-    right-sm: 10px,
-    right-xs: 5px,
-);
-$com-margin-top: (
-    top-lg: 25px,
-    top-big: 20px,
-    top-base: 15px,
-    top-sm: 10px,
-    top-xs: 5px,
-);
-$com-margin-bottom: (
-    bottom-lg: 25px,
-    bottom-big: 20px,
-    bottom-base: 15px,
-    bottom-sm: 10px,
-    bottom-xs: 5px,
-);
 
 
 
